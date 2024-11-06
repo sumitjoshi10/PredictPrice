@@ -21,19 +21,10 @@ class DataIngestionConfig:
 class DataIngestion:
     def __init__(self):
         self.data_ingestion_config = DataIngestionConfig()
-        
-    def initate_data_ingestion(self):
+    
+    def data_cleaning(self,df):
         try:
-            df = read_data()
-            logging.info("Data Reading Successful")
-            
-            os.makedirs(os.path.dirname(self.data_ingestion_config.raw_data_path),exist_ok=True)
-            
-            df.to_csv(self.data_ingestion_config.raw_data_path,index=False,header=True)
-            
-            # Cleaning the total_sqft data
-            logging.info("Data Cleaning Started")
-            
+            # Cleaning the total_sqft data           
             logging.info("Cleaning the Total Square Feet Feature")
             df["total_sqft"] = df["total_sqft"].apply(convert_sqft_to_num)
             
@@ -69,7 +60,22 @@ class DataIngestion:
             
             logging.info("Dropping the Unwanted Columns")
             df_final = df_rm_sqft_ppsqft_bhk.drop(["area_type","society","balcony","availability","size","Price_per_sqft"],axis=1)
+            return df_final
+        
+        except Exception as e:
+            raise CustomeException(e, sys)
+    
+    def initate_data_ingestion(self):
+        try:
+            df = read_data()
+            logging.info("Data Reading Successful")
             
+            os.makedirs(os.path.dirname(self.data_ingestion_config.raw_data_path),exist_ok=True)
+            
+            df.to_csv(self.data_ingestion_config.raw_data_path,index=False,header=True)
+            
+            logging.info("Data Cleaning Started")
+            df_final = self.data_cleaning(df)
             logging.info("Data Cleaning Completed")
             
             df_final.to_csv(self.data_ingestion_config.clean_data_path,index=False, header=True)
