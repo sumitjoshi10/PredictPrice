@@ -17,6 +17,7 @@ list_of_files = [
     "src/exception.py",
     "src/logger.py",
     "src/utils.py",
+    "src/data_cleaning_helper.py",
     "templates/index.html",
     "app.py",
     "Dockerfile",
