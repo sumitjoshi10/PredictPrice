@@ -1,0 +1,26 @@
+{
+    "liner_regression": {
+        "best_score": 0.8084810075878537,
+        "best_params": {},
+        "test_r2_score": 0.8023922164147663,
+        "avg_best_score": 0.8060454911186188
+    },
+    "lasso": {
+        "best_score": 0.8096019754095979,
+        "best_params": {
+            "alpha": 2,
+            "selection": "random"
+        },
+        "test_r2_score": 0.8014636369683921,
+        "avg_best_score": 0.8063466400331156
+    },
+    "decision_tree": {
+        "best_score": 0.7936345320336766,
+        "best_params": {
+            "criterion": "squared_error",
+            "splitter": "best"
+        },
+        "test_r2_score": 0.9915867645165156,
+        "avg_best_score": 0.8728154250268122
+    }
+}
