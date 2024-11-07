@@ -6,21 +6,21 @@
         "avg_best_score": 0.8060454911186188
     },
     "lasso": {
-        "best_score": 0.8096019754095979,
+        "best_score": 0.8095975648030045,
         "best_params": {
             "alpha": 2,
-            "selection": "random"
+            "selection": "cyclic"
         },
-        "test_r2_score": 0.8014636369683921,
-        "avg_best_score": 0.8063466400331156
+        "test_r2_score": 0.8014625680956536,
+        "avg_best_score": 0.8063435661200642
     },
     "decision_tree": {
-        "best_score": 0.7936345320336766,
+        "best_score": 0.7979924824641715,
         "best_params": {
-            "criterion": "squared_error",
+            "criterion": "friedman_mse",
             "splitter": "best"
         },
         "test_r2_score": 0.9915867645165156,
-        "avg_best_score": 0.8728154250268122
+        "avg_best_score": 0.8754301952851091
     }
 }

@@ -5,7 +5,7 @@ from src.exception import CustomeException
 
 from dataclasses import dataclass
 
-from src.utils import read_data
+from src.utils import read_data,save_json
 
 from src.data_cleaning_helper import convert_sqft_to_num, extracting_bhk, remove_pps_outliers, remove_bhk_outliers
 
@@ -17,6 +17,7 @@ class DataIngestionConfig:
     clean_data_path = os.path.join("artifacts","clean.csv")
     train_data_path = os.path.join("artifacts","train.csv")
     test_data_path = os.path.join("artifacts","test.csv")
+    location_path = os.path.join("artifacts","location.json")
     
 class DataIngestion:
     def __init__(self):
@@ -79,6 +80,10 @@ class DataIngestion:
             logging.info("Data Cleaning Completed")
             
             df_final.to_csv(self.data_ingestion_config.clean_data_path,index=False, header=True)
+            unique_location = list(df_final["location"].unique())
+            location = {"location":unique_location}
+            save_json(file_path=self.data_ingestion_config.location_path,json_file=location)
+            
             
             train_set, test_set = train_test_split(df_final,test_size=0.2,random_state=10)
             

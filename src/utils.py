@@ -34,6 +34,14 @@ def save_object (file_path , obj):
     except Exception as e:
         raise CustomeException(e , sys)
     
+def load_object (file_path):
+    try:       
+        with open(file_path,"rb") as file_obj:
+            return dill.load(file_obj)
+            
+    except Exception as e:
+        raise CustomeException(e , sys)
+    
 def save_json(file_path, json_file):
     try:
         dir_path = os.path.dirname(file_path)
@@ -42,6 +50,13 @@ def save_json(file_path, json_file):
         
         with open(file_path,"w") as file_json:
             json.dump(json_file,file_json,indent=4)
+    except Exception as e:
+        raise CustomeException(e,sys)
+    
+def load_json(file_path):
+    try:
+        with open(file_path,"r") as f:
+            return json.load(f)
     except Exception as e:
         raise CustomeException(e,sys)
     

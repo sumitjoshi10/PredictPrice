@@ -4,5 +4,6 @@ matplotlib
 scikit-learn
 dill
 category_encoders
+flask
 
 # -e .
