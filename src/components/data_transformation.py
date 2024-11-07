@@ -11,7 +11,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 
-from category_encoders import TargetEncoder
+from sklearn.preprocessing import OneHotEncoder
 
 from sklearn.compose import ColumnTransformer
 
@@ -46,7 +46,7 @@ class DataTransformation:
             categorical_pipeline = Pipeline(
                 steps=[
                     ("imputer",SimpleImputer(strategy="most_frequent")),
-                    ("target_guided",TargetEncoder()),
+                    ("onehotencoding",OneHotEncoder()),
                     ("scaler",StandardScaler(with_mean=False))
                 ]
             )
@@ -85,8 +85,8 @@ class DataTransformation:
             input_feature_train_arr = preprocessor_obj.fit_transform(input_feature_train_df , target_feature_train_df)
             input_feature_test_arr = preprocessor_obj.transform(input_feature_test_df)
            
-            train_arr = np.c_[input_feature_train_arr,np.array(target_feature_train_df)]
-            test_arr = np.c_[input_feature_test_arr,np.array(target_feature_test_df)]
+            train_arr = np.c_[input_feature_train_arr.toarray(),np.array(target_feature_train_df)]
+            test_arr = np.c_[input_feature_test_arr.toarray(),np.array(target_feature_test_df)]
             
             save_object(
                 self.data_transforamtion_congif.preprocessor_path,

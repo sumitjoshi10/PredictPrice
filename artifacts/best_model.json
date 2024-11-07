@@ -1,26 +1,26 @@
 {
     "liner_regression": {
-        "best_score": 0.8084810075878537,
+        "best_score": 0.8589148678384386,
         "best_params": {},
-        "test_r2_score": 0.8023922164147663,
-        "avg_best_score": 0.8060454911186188
+        "test_r2_score": 0.8686352032100233,
+        "avg_best_score": 0.8628030019870725
     },
     "lasso": {
-        "best_score": 0.8095975648030045,
+        "best_score": 0.8461289930009936,
         "best_params": {
-            "alpha": 2,
+            "alpha": 1,
             "selection": "cyclic"
         },
-        "test_r2_score": 0.8014625680956536,
-        "avg_best_score": 0.8063435661200642
+        "test_r2_score": 0.853680516772288,
+        "avg_best_score": 0.8491496025095113
     },
     "decision_tree": {
-        "best_score": 0.7979924824641715,
+        "best_score": 0.795944064377608,
         "best_params": {
-            "criterion": "friedman_mse",
-            "splitter": "best"
+            "criterion": "squared_error",
+            "splitter": "random"
         },
         "test_r2_score": 0.9915867645165156,
-        "avg_best_score": 0.8754301952851091
+        "avg_best_score": 0.874201144433171
     }
 }

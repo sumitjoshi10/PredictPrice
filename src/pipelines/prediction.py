@@ -50,7 +50,7 @@ class Prediction:
             )
             pred = model.predict(data_scaled)
             logging.info(f"Prediction Completed and Price is {pred} Lakhs")
-            return pred
+            return pred[0]
         
         except Exception as e:
             raise CustomeException(e,sys)
@@ -58,9 +58,9 @@ class Prediction:
 class CustomeData:
     def __init__(self,
                  location:str,
-                 total_sqft,
-                 bath,
-                 bhk
+                 total_sqft:float,
+                 bath:int,
+                 bhk:int
                  ):
         self.location = location
         self.total_sqft = total_sqft
@@ -84,8 +84,9 @@ class CustomeData:
         
 
 if __name__ == "__main__":
-    data = CustomeData("1St Block Jayanagar",1630.0,3,3)
+    data = CustomeData("1St Phase Jp Nagar",1000,3,3)
     data_df = data.get_data_as_data_frame()
     prediction = Prediction()
     pred = prediction.predict(features=data_df)
     print(pred)
+    print(type(pred))
