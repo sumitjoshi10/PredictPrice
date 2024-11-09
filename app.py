@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Hi"
+    return render_template("index.html")
 
 @app.route("/get_location_names")
 def get_location_names():
@@ -33,10 +33,9 @@ def predict():
     
     prediction = Prediction()
     response = jsonify({
-        "Estimated Price" : prediction.predict(features=data_df)
+        "Estimated_Price" : prediction.predict(features=data_df)
     })
     response.headers.add("Access-Control-Allow-Origin","*")
-    
     return response
     
 
